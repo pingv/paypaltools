@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON Generator for Payment Shortcuts</title>
+    <script>
+        function generateJSON() {
+            const account = document.getElementById("account").value;
+            const ppSb = document.getElementById("ppSb").value;
+            const ppPd = document.getElementById("ppPd").value;
+            const ppEm = document.getElementById("ppEm").value;
+            const btSb = document.getElementById("btSb").value;
+            const btPd = document.getElementById("btPd").value;
+
+            // Adding the '-' prefix to the account name
+            let jsonStr = `'${account}-': {'pp': {'sb': '${ppSb}', 'pd': '${ppPd}', 'em': '${ppEm}'}, 'bt': {'sb': '${btSb}', 'pd': '${btPd}'}}`;
+
+            document.getElementById("output").value = jsonStr;
+        }
+    </script>
+</head>
+<body>
+
+<h1>Payment Shortcut JSON Generator</h1>
+
+<form>
+    <label for="account">Account:</label>
+    <input type="text" id="account" name="account"><br><br>
+
+    <label for="ppSb">PayPal Sandbox:</label>
+    <input type="text" id="ppSb" name="ppSb"><br><br>
+
+    <label for="ppPd">PayPal Production:</label>
+    <input type="text" id="ppPd" name="ppPd"><br><br>
+
+    <label for="ppEm">PayPal Email:</label>
+    <input type="text" id="ppEm" name="ppEm"><br><br>
+
+    <label for="btSb">Braintree Sandbox:</label>
+    <input type="text" id="btSb" name="btSb"><br><br>
+
+    <label for="btPd">Braintree Production:</label>
+    <input type="text" id="btPd" name="btPd"><br><br>
+
+    <input type="button" value="Generate JSON" onclick="generateJSON()">
+</form>
+
+<h2>Generated JSON:</h2>
+<textarea id="output" rows="10" cols="50"></textarea>
+
+</body>
+</html>
